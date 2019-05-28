@@ -16,12 +16,10 @@
             </swiper-slide>
         </swiper>
         <recommend title="视频推荐"></recommend>
+        <re-film v-for="item in filmItem" :key="item.id" :item="item"></re-film>
         <recommend title="音乐推荐"></recommend>
+        <re-film></re-film>
         <tabbar></tabbar>
-        <transition name="fade">
-			<router-view></router-view>
-            <!-- <p v-show="show">uuuuuuuu</p> -->
-		</transition>
     </div>
     
 </template>
@@ -30,6 +28,7 @@
 import tabbar from '../components/tabbar'
 import searchBar from '../components/searchBar'
 import recommend from '../components/recommend'
+import reFilm from '../components/film/reFilm'
 import { swiper,swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
@@ -46,18 +45,22 @@ export default {
                 effect: 'slide'
             },
             swiperSlides:[1,2,3,4],
-            show: true
+            filmItem: {},
+            musicItem: {}
         }
     },
     methods: {
         getData(){
-            this.axios.get('https://cnodejs.org/api/v1/topics').then((res)=>{
-                // console.log(res)
+            this.axios.get('/api/videoCategoryDetails?id=14').then((data)=>{
+                this.filmItem = data.data.result;
+                console.log(this.filmItem)
+            })
+            this.axios.get('/api/musicRankingsDetails?type=1').then((data)=>{
+                this.musicItem = data.data.result
             })
         },
         goSearch(){
             this.$router.push('/search')
-            // this.show = !this.show
         }
     },
     components:{
@@ -65,7 +68,8 @@ export default {
         swiper,
         swiperSlide,
         tabbar,
-        recommend
+        recommend,
+        reFilm
     },
     computed:{
         swiper() {
