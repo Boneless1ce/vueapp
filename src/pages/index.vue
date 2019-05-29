@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="contanier">
         <search-bar @goEmSearch="goSearch"></search-bar>
         <swiper :options="swiperOption" ref="mySwiper">
             <swiper-slide>
@@ -18,7 +18,7 @@
         <recommend title="视频推荐"></recommend>
         <re-film v-for="item in filmItem" :key="item.id" :item="item"></re-film>
         <recommend title="音乐推荐"></recommend>
-        <re-film></re-film>
+        <reMusic v-for="item in musicItem" :key="item.album_id" :item="item"></reMusic>
         <tabbar></tabbar>
     </div>
     
@@ -29,6 +29,7 @@ import tabbar from '../components/tabbar'
 import searchBar from '../components/searchBar'
 import recommend from '../components/recommend'
 import reFilm from '../components/film/reFilm'
+import reMusic from '../components/music/reMusic'
 import { swiper,swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
@@ -53,7 +54,6 @@ export default {
         getData(){
             this.axios.get('/api/videoCategoryDetails?id=14').then((data)=>{
                 this.filmItem = data.data.result;
-                console.log(this.filmItem)
             })
             this.axios.get('/api/musicRankingsDetails?type=1').then((data)=>{
                 this.musicItem = data.data.result
@@ -69,7 +69,8 @@ export default {
         swiperSlide,
         tabbar,
         recommend,
-        reFilm
+        reFilm,
+        reMusic
     },
     computed:{
         swiper() {
@@ -83,6 +84,9 @@ export default {
 </script>
 
 <style>
+    .contanier{
+        margin-bottom: 51px;
+    }
     .swiper-slide img{
         display: block;
         width: 100%;
