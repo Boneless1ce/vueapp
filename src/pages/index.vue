@@ -17,8 +17,6 @@
         </swiper>
         <recommend title="视频推荐"></recommend>
         <re-film v-for="item in filmItem" :key="item.id" :item="item"></re-film>
-        <recommend title="音乐推荐"></recommend>
-        <reMusic v-for="item in musicItem" :key="item.album_id" :item="item"></reMusic>
         <tabbar></tabbar>
     </div>
     
@@ -29,7 +27,6 @@ import tabbar from '../components/tabbar'
 import searchBar from '../components/searchBar'
 import recommend from '../components/recommend'
 import reFilm from '../components/film/reFilm'
-import reMusic from '../components/music/reMusic'
 import { swiper,swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
@@ -47,7 +44,6 @@ export default {
             },
             swiperSlides:[1,2,3,4],
             filmItem: {},
-            musicItem: {}
         }
     },
     methods: {
@@ -55,13 +51,11 @@ export default {
             this.axios.get('/api/videoCategoryDetails?id=14').then((data)=>{
                 this.filmItem = data.data.result;
             })
-            this.axios.get('/api/musicRankingsDetails?type=1').then((data)=>{
-                this.musicItem = data.data.result
-            })
         },
         goSearch(){
             this.$router.push('/search')
-        }
+        },
+        
     },
     components:{
         searchBar,
@@ -69,8 +63,7 @@ export default {
         swiperSlide,
         tabbar,
         recommend,
-        reFilm,
-        reMusic
+        reFilm
     },
     computed:{
         swiper() {
@@ -79,7 +72,8 @@ export default {
     },
     created(){
         this.getData();
-    }
+    },
+    
 }
 </script>
 
@@ -98,4 +92,5 @@ export default {
 	.fade-enter,.fade-leave-to{
 		transform: translate3d(100%,0,0)
 	}
+    
 </style>

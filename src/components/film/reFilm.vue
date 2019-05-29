@@ -13,9 +13,9 @@
         </div>
         <div class="re-film-content">
             <div class="re-film-title">
-                <em v-for="(tag,index) in item.data.content.data.tags" :key="index" class="re-film-tag">
+                <span v-for="(tag,index) in item.data.content.data.tags" :key="index" class="re-film-tag">
                     #{{tag.name}}#
-                </em>
+                </span>
                 <span>
                     {{item.data.content.data.title}}
                 </span>

@@ -1,5 +1,5 @@
 <template>
-    <div class="search-bar">
+    <div class="search-bar" id="searchBar" :class="{'isFixed':searchBarFixed}">
         <div class="search-input" @click="goSearch()">
             <input type="text" placeholder="   客官想看点什么" readonly>
             <span>
@@ -17,10 +17,31 @@
 
 <script>
 export default {
+    data(){
+        return {
+            searchBarFixed: false
+        }
+    },
     methods: {
         goSearch(){
             this.$emit('goEmSearch')
+        },
+        handleScroll(){
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+            // var offsetTop = document.querySelector('#searchBar').offsetTop
+            var offsetTop = 62
+            if(scrollTop > offsetTop) {
+                this.searchBarFixed = true
+            } else {
+                this.searchBarFixed = false
+            }
         }
+    },
+    mounted(){
+        window.addEventListener('scroll',this.handleScroll)
+    },
+    destroyed(){
+        window.removeEventListener('scroll',this.handleScroll)
     }
 }
 </script>
@@ -61,5 +82,12 @@ export default {
     .search-message{
         margin: 0 30px;
         display: flex;
+    }
+    .isFixed{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
     }
 </style>

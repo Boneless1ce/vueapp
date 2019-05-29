@@ -33,7 +33,7 @@ export default {
     .recommend{
         height: 36px;
         border-bottom:2px solid #FAEBD7;
-        padding: 10px;
+        padding: 10px 15px;
         position: relative;
     }
     .container{
