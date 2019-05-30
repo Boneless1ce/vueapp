@@ -54,8 +54,7 @@ export default {
         },
         goSearch(){
             this.$router.push('/search')
-        },
-        
+        }
     },
     components:{
         searchBar,

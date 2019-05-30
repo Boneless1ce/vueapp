@@ -1,6 +1,6 @@
 <template>
     <div class="page-music">
-        <search-bar></search-bar>
+        <search-bar @goEmSearch="goSearch"></search-bar>
         <keep-alive>
            <sort-music></sort-music> 
         </keep-alive>
@@ -28,6 +28,9 @@ export default {
             this.axios.get('/api/musicRankingsDetails?type=1').then((data)=>{
                 this.musicItem = data.data.result
             })
+        },
+        goSearch(){
+            this.$router.push('/search')
         }
     },
     components: {

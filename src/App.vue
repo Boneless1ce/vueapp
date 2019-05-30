@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>  
+    <transition :name="transitionName">
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>  
+    </transition>
   </div>
 </template>
 
@@ -10,7 +12,22 @@
 
 
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+    return {
+      transitionName: 'none'
+    }
+  },
+  watch: {
+    '$route' (to, from) {
+      if (to.path === '/search'){
+        this.transitionName = 'fade'
+      } else {
+        this.transitionName = 'none'
+      }
+    }
+  }
+  
 }
 </script>
 
@@ -21,5 +38,12 @@ export default {
 }
 body{
   font-size: 14px;
+}
+
+.fade-enter-active,.fade-leave-active{
+  transition: all 0.3s
+}
+.fade-enter,.fade-leave-to{
+  transform: translate3d(100%,0,0)
 }
 </style>
