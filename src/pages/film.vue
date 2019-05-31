@@ -1,6 +1,7 @@
 <template>
     <div class="page-film">
         <tabbar></tabbar>
+        <router-view></router-view>
     </div>
 </template>
 

@@ -5,6 +5,7 @@ import Film from '../pages/film'
 import Music from '../pages/music'
 import Me from '../pages/me'
 import Search from '../pages/search'
+import FilmDetail from '../pages/filmDetail'
 
 Vue.use(Router)
 
@@ -21,7 +22,11 @@ export default new Router({
     },
     {
       path: '/film',
-      component: Film
+      component: Film,
+      children:[{
+        path: ':id',
+        component: FilmDetail
+      }]
     },
     {
       path: '/music',

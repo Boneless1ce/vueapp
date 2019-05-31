@@ -20,7 +20,7 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      if (to.path === '/search'){
+      if (to.path === '/search' || from.path === '/search'){
         this.transitionName = 'fade'
       } else {
         this.transitionName = 'none'

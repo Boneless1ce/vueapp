@@ -20,7 +20,7 @@
                     {{item.data.content.data.title}}
                 </span>
             </div>
-            <div class="re-film-img">
+            <div class="re-film-img" @click="goFilmDetail()">
                 <img :src="item.data.content.data.cover.detail" alt="">
                 <span class="re-film-dur">
                     {{getTime}}
@@ -38,6 +38,11 @@ export default {
     data(){
         return {
             duration:  this.item.data.content.data.duration
+        }
+    },
+    methods:{
+        goFilmDetail(){
+            this.$router.push('/film/'+this.item.data.content.data.id)
         }
     },
     props: {
