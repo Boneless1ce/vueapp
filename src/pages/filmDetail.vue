@@ -1,6 +1,7 @@
 <template>
     <div class="page-film-detail">
         <go-back></go-back>
+        detail
     </div>
 </template>
 
@@ -8,7 +9,6 @@
 import goBack from '../components/goBack'
 
 export default {
-    
     components: {
         goBack
     }
@@ -18,8 +18,10 @@ export default {
 <style>
     .page-film-detail{
         min-height: 100%;
-        width: 100%;
-        background: red;
+        background: #fff;
         position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
     }
 </style>

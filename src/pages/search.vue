@@ -22,6 +22,7 @@ export default {
 <style>
     .page-search{
         min-height: 100%;
+        background: #fff;
         width: 100%;
         position: fixed;
         top: 0;

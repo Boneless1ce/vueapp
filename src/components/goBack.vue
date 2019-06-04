@@ -20,7 +20,7 @@ export default {
     .go-back{
         height: 62px;
         width: 100%;
-        background: rgb(243, 235, 235);
+        background: antiquewhite;
     }
     .btn-back{
         width: 62px;

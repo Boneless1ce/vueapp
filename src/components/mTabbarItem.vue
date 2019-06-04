@@ -20,11 +20,19 @@ export default {
     methods:{
         goToRoute(route){
             this.$router.push(this.useId)
+            // console.log(this.$route.path)
+        },
+        getRoutePath(){
+            if (this.$route.path === '/film/playing' || this.$route.path === '/film/coming') {
+                return '/film'
+            }
+            return this.$route.path
         }
     },
     computed:{
         isActive(){
-            if (this.$route.path === this.useId) {
+            const getPath = this.getRoutePath();
+            if (getPath === this.useId) {
                 return true
             } else {
                 return false

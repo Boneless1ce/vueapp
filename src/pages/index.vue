@@ -72,11 +72,4 @@ export default {
         width: 100%;
         height: 150px;
     }
-    .fade-enter-active,.fade-leave-active{
-		transition:all .3s;
-	}
-	.fade-enter,.fade-leave-to{
-		transform: translate3d(100%,0,0)
-	}
-    
 </style>
