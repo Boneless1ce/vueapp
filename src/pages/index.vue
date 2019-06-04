@@ -15,8 +15,7 @@
                 <img src="../assets/images/04.jpg" alt="">
             </swiper-slide>
         </swiper>
-        <recommend title="视频推荐"></recommend>
-        <re-film v-for="item in filmItem" :key="item.id" :item="item"></re-film>
+        <re-film-class></re-film-class>
         <tabbar></tabbar>
     </div>
     
@@ -25,8 +24,7 @@
 <script>
 import tabbar from '../components/tabbar'
 import searchBar from '../components/searchBar'
-import recommend from '../components/recommend'
-import reFilm from '../components/film/reFilm'
+import reFilmClass from '../components/film/reFilmClass'
 import { swiper,swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 
@@ -42,16 +40,10 @@ export default {
                 loop:1,
                 effect: 'slide'
             },
-            swiperSlides:[1,2,3,4],
-            filmItem: {},
+            swiperSlides:[1,2,3,4]
         }
     },
     methods: {
-        getData(){
-            this.axios.get('/api/videoCategoryDetails?id=14').then((data)=>{
-                this.filmItem = data.data.result;
-            })
-        },
         goSearch(){
             this.$router.push('/search')
         }
@@ -61,18 +53,13 @@ export default {
         swiper,
         swiperSlide,
         tabbar,
-        recommend,
-        reFilm
+        reFilmClass
     },
     computed:{
         swiper() {
             return this.$refs.mySwiper.swiper
         }
-    },
-    created(){
-        this.getData();
-    },
-    
+    }
 }
 </script>
 

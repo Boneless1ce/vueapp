@@ -1,5 +1,5 @@
 <template>
-    <div class="recommend">
+    <div class="recommend" v-if="isActiveToShow" v-cloak>
         <div class="container">
             <span class="icon">
                 <img src="../assets/images/hot.png" alt="">
@@ -20,16 +20,27 @@
 export default {
     data(){
         return {
-
+            isActiveToShow: false
         }
     },
     props: {
         title: String
+    },
+    methods:{
+        isActive(){
+            this.isActiveToShow = true
+        }
+    },
+    created(){
+        this.isActive()
     }
 }
 </script>
 
 <style>
+    [v-cloak] {
+        display: none !important
+    }
     .recommend{
         height: 36px;
         border-bottom:2px solid #FAEBD7;
