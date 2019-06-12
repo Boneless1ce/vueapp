@@ -1,7 +1,7 @@
 <template>
     <div class="re-film-class">
         <recommend title="视频推荐"></recommend>
-        <re-film v-for="item in filmItem" :key="item.id" :item="item"></re-film>
+        <re-film v-for="(item,index) in filmItem" :key="index" :item="item" :index="index"></re-film>
     </div>
 </template>
 

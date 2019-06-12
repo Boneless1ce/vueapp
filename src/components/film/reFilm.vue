@@ -42,7 +42,10 @@ export default {
     },
     methods:{
         goFilmDetail(){
-            this.$router.push('/film/'+this.item.data.content.data.id)
+            this.$router.push({
+                path:'/film/'+this.item.data.content.data.id, 
+                query:{ eq: this.index }
+            })
         }
     },
     props: {
@@ -61,7 +64,7 @@ export default {
                 }
             }
         },
-        
+        index: ''
     },
     computed: {
         getTime(){

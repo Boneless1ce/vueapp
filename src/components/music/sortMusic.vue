@@ -45,6 +45,11 @@ export default {
     .sort-title{
         text-align: center;
     }
+    .sort-img{
+        width: 80px;
+        height: 80px;
+        background-color: #a7a7a7;
+    }
     .sort-img img{
         width: 80px;
         height: 80px;
