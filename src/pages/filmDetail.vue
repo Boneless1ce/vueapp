@@ -2,8 +2,7 @@
     <div class="page-film-detail">
         <go-back></go-back>
         <video :src="this.detailItem.data.content.data.playUrl" width="100%" ref="video" controls>抱歉，你的设备无法播放视频鸭</video>
-        <film-intro></film-intro> 
-        {{detailItem.data.content.data.description}}
+        <film-intro :detailItem="this.detailItem"></film-intro> 
     </div>
 </template>
 
@@ -19,7 +18,17 @@ export default {
                 data: {
                     content: {
                         data: {
-                            description: {}
+                            description: {},
+                            author: {
+                                icon: {},
+                                name: {},
+                                description: {}
+                            },
+                            consumption: {
+                                collectionCount:{},
+                                replyCount:{},
+                                shareCount:{}
+                            }
                         }
                     }
                 }
