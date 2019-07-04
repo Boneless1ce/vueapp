@@ -11,8 +11,9 @@
                 <span>{{detailItem.data.content.data.author.name}}</span>
                 <span>{{detailItem.data.content.data.author.description}}</span>
             </div>
-            <div class="film-intro-atte">
-                <span>+ 关注</span>
+            <div class="film-intro-atte" @click="addAtteFc()">
+                <span v-if="addAtte">+ 关注</span>
+                <span v-if="!addAtte">已关注</span>
             </div>
         </div>
         <div class="film-intro-description">
@@ -45,7 +46,8 @@
     export default {
         data(){
             return {
-                isActive: false
+                isActive: false,
+                addAtte: true
             }
         },
         methods: {
@@ -59,6 +61,9 @@
                 } else {
                     descTitle.classList.add('is-show');
                 }
+            },
+            addAtteFc(){
+                this.addAtte = !this.addAtte;
             }
         },
         props: ['detailItem'],
