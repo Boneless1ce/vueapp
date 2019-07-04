@@ -17,6 +17,13 @@ module.exports = {
         pathRewrite: {
           "^/api": ''
         }
+      },
+      '/kai':{
+        target: 'http://baobab.kaiyanapp.com/api/v5/index',
+        changeOrigin: true,
+        pathRewrite: {
+          "^/kai": ''
+        }
       }
     },
 

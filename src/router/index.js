@@ -8,6 +8,7 @@ import Search from '../pages/search'
 import FilmDetail from '../pages/filmDetail'
 import Coming from '../pages/film/coming'
 import Playing from '../pages/film/playing'
+import FilmClassify from '../pages/filmClassify'
 
 Vue.use(Router)
 
@@ -48,6 +49,10 @@ export default new Router({
     {
       path: '/search',
       component: Search
+    },
+    {
+      path: '/classify',
+      component: FilmClassify
     }
   ]
 })

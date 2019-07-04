@@ -8,7 +8,7 @@
                 {{title}}
             </span>
         </div>
-        <div class="more">
+        <div class="more" @click="goClassify()"> 
             <em>
                 MORE>>
             </em>
@@ -18,13 +18,13 @@
 
 <script>
 export default {
-    data(){
-        return {
-           
-        }
-    },
     props: {
         title: String
+    },
+    methods: {
+        goClassify(){
+            this.$router.push('./classify')
+        }
     }
 }
 </script>
